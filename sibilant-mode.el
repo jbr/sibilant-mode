@@ -17,9 +17,10 @@
 
 
 (eval-when-compile
+  (require 'cl)
   (defvar calculate-lisp-indent-last-sexp))
 
-(require 'cl-lib)
+;;(require 'cl-lib)
 
 (defgroup sibilant-mode nil
   "A mode for Sibilant Lisp"
@@ -155,5 +156,10 @@
 (add-to-list 'auto-mode-alist '("\\.son$" . sibilant-mode))
 
 (provide 'sibilant-mode)
+
+;; Local Variables:
+;; coding: utf-8
+;; byte-compile-warnings: (not cl-functions)
+;; End:
 
 ;;; sibilant-mode.el ends here
