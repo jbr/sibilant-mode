@@ -17,10 +17,9 @@
 
 
 (eval-when-compile
-  (require 'cl)
   (defvar calculate-lisp-indent-last-sexp))
 
-;;(require 'cl-lib)
+(require 'cl)
 
 (defgroup sibilant-mode nil
   "A mode for Sibilant Lisp"
