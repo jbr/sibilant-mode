@@ -14,6 +14,13 @@
 
 ;;; Code:
 
+
+
+(eval-when-compile
+  (defvar calculate-lisp-indent-last-sexp))
+
+(require 'cl-lib)
+
 (defgroup sibilant-mode nil
   "A mode for Sibilant Lisp"
   :prefix "sibilant-mode-"
