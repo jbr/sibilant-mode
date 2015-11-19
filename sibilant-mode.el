@@ -1,6 +1,7 @@
 ;;; sibilant-mode.el --- Support for the Sibilant programming language
 
-;; Copyright (C) 2011-2015 
+;; Copyright (C) 2011-2015
+
 ;; Author: Jacob Rothstein <hi@jbr.me>
 ;; Created: Feb 9, 2011
 ;; Keywords: languages
@@ -8,7 +9,23 @@
 
 ;; This file is not part of GNU Emacs.
 
-;; This file is free software
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Provides a major mode for the Sibilant programming language.
+
 ;; I should mention that I looked at clojure-mode
 ;; (https://github.com/jochu/clojure-mode) when writing this.
 
@@ -31,7 +48,7 @@
     (set-keymap-parent map lisp-mode-shared-map)
     (define-key map (kbd "RET") 'reindent-then-newline-and-indent)
     map)
-  "Keymap for Sibilant mode. Inherits from `lisp-mode-shared-map'.")
+  "Keymap for Sibilant mode.  Inherits from `lisp-mode-shared-map'.")
 
 (defvar sibilant-mode-syntax-table
   (let ((table (copy-syntax-table emacs-lisp-mode-syntax-table)))
@@ -45,29 +62,12 @@
     table))
 
 ;;;###autoload
-(defun sibilant-mode ()
+(define-derived-mode sibilant-mode lisp-mode "Sibilant"
   "Major mode for editing Sibilant code - similar to Lisp mode."
-  (interactive)
-  (kill-all-local-variables)
-  (use-local-map sibilant-mode-map)
-  (setq major-mode 'sibilant-mode)
-  (setq mode-name "Sibilant")
   (lisp-mode-variables nil)
-
-  (set-syntax-table sibilant-mode-syntax-table)
-
   (set (make-local-variable 'lisp-indent-function)
        'sibilant-indent-function)
-
-  (sibilant-mode-font-lock-setup)
-
-  (run-mode-hooks 'sibilant-mode-hook))
-
-(defun sibilant-mode-font-lock-setup ()
-  "Configures font-lock for editing Sibilant code."
-  (interactive)
-  (setq font-lock-defaults
-        '(sibilant-font-lock-keywords)))
+  (setq font-lock-defaults '(sibilant-font-lock-keywords)))
 
 (defconst sibilant-font-lock-keywords
   '(("(\\(def\\|macro\\)[ \t\n\r]+\\([[:alnum:].*/+<>=!-]+[?!]?\\)[ \t\r\n]+(\\(.*?\\))"
