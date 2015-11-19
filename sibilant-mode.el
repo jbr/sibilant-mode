@@ -50,13 +50,7 @@
   (lisp-mode-variables nil)
   (set (make-local-variable 'lisp-indent-function)
        'sibilant-indent-function)
-  (sibilant-mode-font-lock-setup))
-
-(defun sibilant-mode-font-lock-setup ()
-  "Configures font-lock for editing Sibilant code."
-  (interactive)
-  (setq font-lock-defaults
-        '(sibilant-font-lock-keywords)))
+  (setq font-lock-defaults '(sibilant-font-lock-keywords)))
 
 (defconst sibilant-font-lock-keywords
   '(("(\\(def\\|macro\\)[ \t\n\r]+\\([[:alnum:].*/+<>=!-]+[?!]?\\)[ \t\r\n]+(\\(.*?\\))"
