@@ -45,23 +45,12 @@
     table))
 
 ;;;###autoload
-(defun sibilant-mode ()
+(define-derived-mode sibilant-mode lisp-mode "Sibilant"
   "Major mode for editing Sibilant code - similar to Lisp mode."
-  (interactive)
-  (kill-all-local-variables)
-  (use-local-map sibilant-mode-map)
-  (setq major-mode 'sibilant-mode)
-  (setq mode-name "Sibilant")
   (lisp-mode-variables nil)
-
-  (set-syntax-table sibilant-mode-syntax-table)
-
   (set (make-local-variable 'lisp-indent-function)
        'sibilant-indent-function)
-
-  (sibilant-mode-font-lock-setup)
-
-  (run-mode-hooks 'sibilant-mode-hook))
+  (sibilant-mode-font-lock-setup))
 
 (defun sibilant-mode-font-lock-setup ()
   "Configures font-lock for editing Sibilant code."
