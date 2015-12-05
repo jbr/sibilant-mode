@@ -1,3 +1,3 @@
 # Sibilant mode for emacs
 
-melpa ready, maybe?
+[![MELPA](https://melpa.org/packages/sibilant-mode-badge.svg)](https://melpa.org/#/sibilant-mode)
